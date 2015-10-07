@@ -83,9 +83,9 @@ boolean debug = false;
 //      FONA_VIO - wire to Riffle 3V3, which is also on the daughter board
 #define FONA_RX 1 // communications - wire to Riffle D1
 #define FONA_TX 0 // communications - wire to Riffle D0
-#define FONA_KEY 13 // pulse to power up or down - wire to Riffle D11
-#define FONA_PS 11 // status pin - wire to Riffle D13
-#define FONA_RST 12 // the reset pin - wire to Riffle D10
+#define FONA_KEY 13 // pulse to power up or down - wire to Riffle D13
+#define FONA_PS 11 // status pin - wire to Riffle D11
+#define FONA_RST 12 // the reset pin - wire to Riffle 12
 //      FONA_GND - wire to Riffle Ground, which is also on the daughter board
 
 int keyTime = 2000; // Time needed to turn on/off the Fona
@@ -131,7 +131,7 @@ int sensor_data;
 // must be defined in case we're using the watchdog for low-power waiting
 ISR(WDT_vect) { Sleepy::watchdogEvent(); }
 // minutes between texts
-int mins_between_texts = 15; 
+int mins_between_texts = 10; 
 
 void setup()
 {
@@ -242,7 +242,7 @@ void loop()
   //   And my targed is a throwaway string called "padding"
 
   // building the message to text
-  base_message = "Riffle Bottle 1,";
+  base_message = "RiffleBottle2,";
   char padding[10];
   base_message += dtostrf(freqHertz, 6, 2, padding);
   base_message += ",";
